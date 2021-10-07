@@ -1,0 +1,44 @@
+#include<stdio.h>
+void main()
+{
+    
+    int nf,nb,b[20],f[20],frag[20],ff[20],temp,i,flag[20],j;
+    printf("Enter the number of blocks: ");
+    scanf("%d",&nb);
+    printf("Enter the number of files: ");
+    scanf("%d",&nf);
+    for(i=1;i<=nb;i++)
+    {
+        printf("Enter the size of block %d: ",i);
+        scanf("%d",&b[i]);
+    }
+    for(i=1;i<=nf;i++)
+    {
+        printf("Enter the size of files %d: ",i);
+        scanf("%d",&f[i]);
+    }
+    for(i=1;i<nf;i++)
+    {
+        for(j=1;j<nb;j++)
+        {
+            if(flag[j]!=1)
+            {
+                temp=b[j]-f[i];
+                if(temp>=0)
+                {
+                    ff[i]=j;
+                    frag[i]=temp;
+                    flag[j]=1;
+                    break;
+                }
+            }
+        }
+    }
+    printf("\nFile No.\tFile Size\tBlock No.\tBlock Size\tFragment");
+    for(i=1;i<=nf;i++)
+        printf("\n%d\t\t%d\t\t%d\t\t%d\t\t%d",i,f[i],ff[i],b[ff[i]],frag[i]);
+    }
+
+
+
+

@@ -1,0 +1,43 @@
+#include<conio.h>
+int b[10],t_tat=0,tat[10],n,i,wt[10],t_wt;
+void abcd();
+void main()
+{
+    printf("Enter the no. of processes");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("Enter the burst time of processes %d",i+1);
+        scanf("%d",&b[i]);
+    }
+    abcd();
+    printf("\nTurn Around Time:%d",t_tat);
+    printf("\nAv. Turn Around Time:%d",t_tat/n);
+    printf("\nWaiting Time:%d",t_wt);
+    printf("\nAv. Waiting Time:%d",t_wt/n);
+ }
+
+void abcd()
+{
+    for(i=0;i<n;i++)
+    {
+        if(i==0)
+            tat[i]=b[i];
+          
+        else
+            tat[i]=tat[i-1]+b[i];
+        t_tat=t_tat+tat[i];
+    }
+    wt[0]=0;
+    for(i=1;i<n;i++)
+    {
+        wt[i]=wt[i-1]+b[i-1];
+        t_wt=t_wt+wt[i];
+    }
+    printf("\nProcess\t\tBurst Time\tTurn Around Time\Waiting Time");
+    for(i=0;i<n;i++)
+    {
+         printf("\n%d\t\t%d\t\t%d\t\t%d",i+1,b[i],tat[i],wt[i]);
+    }
+}
+
