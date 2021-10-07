@@ -1,0 +1,98 @@
+1.Shell program to find sum of squares of n numbers
+echo "Enter value of a"
+read a
+i=1
+sum=0
+echo "Enter numbers"
+while [ $i -le $a ]
+do
+ read num 
+ r=`expr $num \* $num`
+ sum=$((sum + r))
+ i=$((i+1))
+done
+echo "Sum of squares=$sum"
+2. Find sum of digits of a number
+echo "Enter a number"
+read a
+sum=0
+while [ $a -gt 0 ]
+do
+ mod=$((a % 10))
+ sum=$((sum + mod))
+ a=$((a / 10))
+done
+echo "Sum of digits = $sum"
+3.Reverse of a number
+echo "Enter number"
+read n
+a=0
+rev=0
+while [ $n -gt 0 ]
+do 
+ a=$((n % 10))
+ rev=$((rev * 10 + a))
+ n=$((n / 10))
+done
+echo "Reverse of the number is $rev"
+4.Factorial of a number
+echo "Enter number"
+read n
+fact=1
+while [ $n -gt 1 ]
+do
+ fact=$((fact * n))
+ n=$((n - 1))
+done
+echo "Factorial of the number is $fact"
+5.Check a number is Armstrong number or not
+echo "Enter number"
+read n
+x=$n
+sum=0
+r=0
+a=0
+while [ $x -gt 0 ]
+do
+ r=$((x % 10))
+ a=$((r * r * r))
+ sum=$((sum + a))
+ x=$((x / 10))
+done
+if [ $sum -eq $n ]
+ then
+ echo "$n is armstrong number"
+else
+ echo "$n is not an armstrong number"
+fi
+6.Check prime or not
+echo "Enter number"
+read n
+for((i=2 ; i<= $n /2 ; i++))
+do
+ a=$((n % i))
+ if [ $a -eq 0 ]
+ then
+ echo "$n is not a prime"
+ exit 0
+ fi
+done
+echo "$n is prime"
+7.Check palindrome or not
+echo "enter number"
+read n 
+c=$n
+a=0
+rev=0
+while [ $n -gt 0 ]
+do
+ a=$((n % 10))
+ rev=$((rev * 10 + a))
+ n=$((n / 10))
+done
+if [ $rev -eq $c ]
+then
+echo "Palindrome"
+else
+echo "not palindrome"
+fi
